@@ -19,7 +19,7 @@ function App() {
     } else if (os === 'mac-intel') {
       url = `${baseUrl}/3min-wallet_${version.replace('v', '')}_x64.dmg`;
     } else {
-      url = `${baseUrl}/3min-wallet_${version.replace('v', '')}_x64_ko-KR.msi`;
+      url = `${baseUrl}/3min-wallet_${version.replace('v', '')}_x64-setup.exe`;
     }
 
     window.location.href = url;
