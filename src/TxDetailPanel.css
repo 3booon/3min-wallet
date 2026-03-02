@@ -1,0 +1,272 @@
+/* ─── Overlay ────────────────────────────────────────────── */
+
+.txpanel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Modal Panel ────────────────────────────────────────── */
+
+.txpanel {
+  width: min(900px, 95vw);
+  max-height: 88vh;
+  background: #13161f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+  animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Scrollable body */
+.txpanel-body {
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.07) transparent;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+
+.txpanel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.txpanel-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.txpanel-txid {
+  font-size: 0.78rem;
+  font-family: 'Courier New', monospace;
+  color: #64748b;
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.txpanel-close {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #475569;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.txpanel-close:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
+/* ─── Meta row ───────────────────────────────────────────── */
+
+.txpanel-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.txpanel-meta-item {
+  font-size: 0.78rem;
+  color: #475569;
+}
+
+.tx-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.tx-badge.confirmed {
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.tx-badge.unconfirmed {
+  background: rgba(234, 179, 8, 0.1);
+  color: #fde68a;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.tx-badge.confirming {
+  background: rgba(249, 115, 22, 0.1);
+  color: #fdba74;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+/* ─── Sections ───────────────────────────────────────────── */
+
+.txpanel-section {
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.txpanel-section-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+/* ─── I/O Grid ───────────────────────────────────────────── */
+
+.io-grid {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+.io-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.io-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.io-total {
+  font-family: 'Courier New', monospace;
+  color: #64748b;
+}
+
+.io-arrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 42px;
+  font-size: 1.1rem;
+  color: #334155;
+}
+
+.io-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.15s;
+}
+
+.io-item.watch {
+  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.04);
+}
+
+.io-addr {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: #64748b;
+  word-break: break-all;
+}
+
+.io-val {
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #e2e8f0;
+}
+
+/* ─── Tags ───────────────────────────────────────────────── */
+
+.io-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.io-tag.mine {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.io-tag.coinbase {
+  background: rgba(247, 147, 26, 0.1);
+  color: #fbbf24;
+  border: 1px solid rgba(247, 147, 26, 0.2);
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+
+.txpanel-footer {
+  padding: 16px 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.txpanel-external-link {
+  font-size: 0.8rem;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.txpanel-external-link:hover {
+  color: #f7931a;
+  text-decoration: underline;
+}

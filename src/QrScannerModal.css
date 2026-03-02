@@ -1,0 +1,100 @@
+/* ─── QR Scanner Modal ───────────────────────── */
+
+.qr-modal-content {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: #1e293b;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.qr-modal-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.qr-modal-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.qr-modal-error {
+  margin: 20px 0;
+}
+
+.qr-video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qr-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.qr-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 4000px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.qr-scan-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+.qr-progress-bar {
+  height: 4px;
+  background: #4ade80;
+  margin-top: 8px;
+  border-radius: 2px;
+  transition: width 0.2s;
+}
+
+.qr-help-text {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: left;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qr-close-btn-bottom {
+  margin-top: 20px;
+  width: 100%;
+}

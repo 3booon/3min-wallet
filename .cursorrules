@@ -1,0 +1,4 @@
+# AI Rules
+
+- DO NOT automatically run `git commit`, `git add`, `git push` or any other git commands that modify repository state without explicit permission and direction from the user.
+- If you believe a commit is necessary, propose the change and ask the user to confirm before proceeding.

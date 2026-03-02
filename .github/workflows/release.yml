@@ -1,0 +1,53 @@
+name: 'Release Tauri App'
+
+on:
+  push:
+    tags:
+      - 'app-v*'
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'macos-latest' 
+            args: '--target aarch64-apple-darwin'
+          - platform: 'macos-latest' 
+            args: '--target x86_64-apple-darwin'
+          - platform: 'windows-latest'
+            args: ''
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Setup React frontend
+        run: npm install
+
+      - name: Check package version
+        run: node -p "require('./package.json').version"
+
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }} # the action automatically replaces \`refs/tags/\` with nothing
+          releaseName: '3min Wallet ${{ github.ref_name }}'
+          releaseBody: 'See the attached assets for the newly built macOS and Windows binaries.'
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}

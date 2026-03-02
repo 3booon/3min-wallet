@@ -1,0 +1,492 @@
+/* ─── Settings Overlay ─────────────────────────── */
+
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 68px 24px 24px;
+  animation: fadeIn 0.18s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Modal Panel ─────────────────────────────── */
+
+.settings-modal {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(19, 22, 31, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── Header ──────────────────────────────────── */
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-icon {
+  font-size: 20px;
+  color: #f7931a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-header h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.settings-close-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #64748b;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-close-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
+/* ─── Section ────────────────────────────────── */
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #475569;
+}
+
+/* ─── Provider Option Cards ──────────────────── */
+
+.provider-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.025);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.provider-option:hover {
+  border-color: rgba(247, 147, 26, 0.25);
+  background: rgba(247, 147, 26, 0.04);
+}
+
+.provider-option.active {
+  border-color: rgba(247, 147, 26, 0.4);
+  background: rgba(247, 147, 26, 0.07);
+  box-shadow: 0 0 0 1px rgba(247, 147, 26, 0.15) inset;
+}
+
+/* Radio Dot */
+.provider-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+
+.provider-option.active .provider-radio {
+  border-color: #f7931a;
+}
+
+.radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.15s, transform 0.15s;
+  transform: scale(0);
+}
+
+.radio-dot.on {
+  background: #f7931a;
+  transform: scale(1);
+}
+
+/* Provider Info */
+.provider-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.provider-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 2px;
+}
+
+.provider-desc {
+  font-size: 0.72rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* Badge */
+.provider-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+.provider-badge.external {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.provider-badge.local {
+  background: rgba(16, 185, 129, 0.1);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* ─── Node URL Field ─────────────────────────── */
+
+.node-url-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 4px 14px 4px 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.node-url-field:focus-within {
+  border-color: rgba(247, 147, 26, 0.4);
+  box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.08);
+}
+
+.node-url-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.node-url-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  color: #e2e8f0;
+  outline: none;
+  box-shadow: none;
+}
+
+.node-url-input::placeholder {
+  color: #334155;
+}
+
+.node-url-hint {
+  font-size: 0.72rem;
+  color: #334155;
+  line-height: 1.5;
+  padding-left: 2px;
+}
+
+/* ─── Test Connection ────────────────────────── */
+
+.test-connection-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.test-connection-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.test-connection-btn:hover:not(:disabled) {
+  border-color: rgba(247, 147, 26, 0.3);
+  color: #f7931a;
+  background: rgba(247, 147, 26, 0.06);
+}
+
+.test-connection-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.test-result {
+  font-size: 0.78rem;
+  font-weight: 500;
+  word-break: break-all;
+  flex: 1;
+}
+
+.test-result.ok {
+  color: #6ee7b7;
+}
+
+.test-result.error {
+  color: #fca5a5;
+}
+
+/* ─── Actions ────────────────────────────────── */
+
+.settings-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.settings-cancel-btn {
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.settings-cancel-btn:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #94a3b8;
+}
+
+.settings-save-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f7931a, #e8820a);
+  color: #fff;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(247, 147, 26, 0.3);
+}
+
+.settings-save-btn:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 22px rgba(247, 147, 26, 0.45);
+  transform: translateY(-1px);
+}
+
+.settings-save-btn:active {
+  transform: translateY(0);
+}
+
+/* ─── Tabs ────────────────────────────────────── */
+
+.settings-tab-bar {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.settings-tab-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.settings-tab-btn:hover {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.settings-tab-btn.active {
+  color: #f7931a;
+  background: rgba(247, 147, 26, 0.1);
+}
+
+/* ─── SSL Toggle ──────────────────────────────── */
+
+.ssl-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 2px;
+}
+
+.ssl-toggle-label {
+  font-size: 0.83rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.ssl-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.ssl-toggle-track {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.2s, border-color 0.2s;
+  display: block;
+}
+
+.ssl-toggle-btn.on .ssl-toggle-track {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.ssl-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #64748b;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s;
+}
+
+.ssl-toggle-btn.on .ssl-toggle-thumb {
+  transform: translateX(16px);
+  background: #6ee7b7;
+}
+
+.ssl-toggle-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  min-width: 28px;
+  transition: color 0.2s;
+}
+
+.ssl-toggle-btn.on .ssl-toggle-text {
+  color: #6ee7b7;
+}
+
+/* ─── Electrum Host/Port Row ─────────────────── */
+
+.electrum-host-row {
+  display: flex;
+  gap: 8px;
+}
+
+.electrum-host-field {
+  flex: 1;
+}
+
+.electrum-port-field {
+  width: 84px;
+  flex-shrink: 0;
+}
+
+.electrum-port-field .node-url-input {
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+/* ─── URL Preview ────────────────────────────── */
+
+.url-preview {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: #6ee7b7;
+  opacity: 0.8;
+  padding: 6px 10px;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  border-radius: 7px;
+  word-break: break-all;
+}
+
