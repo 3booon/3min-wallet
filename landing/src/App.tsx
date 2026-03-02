@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './index.css';
 import { Download, Monitor, ShieldCheck, Zap, Bitcoin, Github, EyeOff, Terminal, Info } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import customLogo from './assets/app-icon.png';
 import previewImage from './assets/3min_wallet_preview.png';
 
@@ -197,6 +198,7 @@ function App() {
           Open Source on <a href="https://github.com/3booon/3min-wallet" target="_blank" rel="noopener noreferrer">GitHub</a>
         </p>
       </footer>
+      <Analytics />
     </div>
   );
 }
